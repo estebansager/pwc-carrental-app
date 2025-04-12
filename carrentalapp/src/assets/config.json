@@ -12,7 +12,7 @@
             "scheduledservices": "https://localhost:7137/reporting/scheduledservices"
         },
         "reporting": {
-            "mostusedcars": "https://localhost:7137/reporting/mostusedtype"
+            "mostrentedcar": "https://localhost:7137/reporting/mostrentedcar"
         }
     }
 }

@@ -44,6 +44,6 @@ export const servicesReducer = createReducer(
     ...state,
     apiError: error,
     loading: false,
-    rentalConfirmation: [null]
+    scheduledServices: []
   }))
 );

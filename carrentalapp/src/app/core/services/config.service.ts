@@ -35,7 +35,7 @@ import { firstValueFrom } from "rxjs";
       return this.config?.api?.services.scheduledservices || '';
     }
 
-    mostUsedCar(): string {
-      return this.config?.api?.reporting.mostUsedCar || '';
+    mostRentedCar(): string {
+      return this.config?.api?.reporting.mostrentedcar || '';
     }
   }
