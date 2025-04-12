@@ -1,10 +1,18 @@
 {
     "api": {
         "rentals": {
-            "availability": "https://localhost:7137/rentals/availability"
-            
+            "availability": "https://localhost:7137/rentals/availability",
+            "rent": "https://localhost:7137/rentals"
+        },
+        "cars": {
+            "types": "https://localhost:7137/cars/types",
+            "models": "https://localhost:7137/cars/models"
+        },
+        "services": {
+            "scheduledservices": "https://localhost:7137/reporting/scheduledservices"
+        },
+        "reporting": {
+            "mostusedcars": "https://localhost:7137/reporting/mostusedtype"
         }
     }
-
-    
 }

@@ -6,9 +6,10 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HomeComponent } from "./home.component";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
-import { CarEffects } from "./state/car.effects";
-import { carReducer, carReducerKey, CarState } from "./state/car.reducer";
+import { AvailableCarEffects } from "./state/available-car.effects";
+import { availableCarReducer, availableCarReducerKey, AvailableCarsState } from "./state/available-car.reducer";
 import { CarResultsListComponent } from "./car-search-results.component";
+import { CarModule } from "../shared/cars/car.module";
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -21,8 +22,9 @@ const routes: Routes = [
         CommonModule, 
         ReactiveFormsModule, 
         RouterModule.forChild(routes),
-        EffectsModule.forFeature([CarEffects]),
-        StoreModule.forFeature(carReducerKey, carReducer)
+        EffectsModule.forFeature([AvailableCarEffects]),
+        StoreModule.forFeature(availableCarReducerKey, availableCarReducer),
+        CarModule
     ],
   })
   export class HomeModule {}
