@@ -2,11 +2,11 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { CarService } from '../services/car.service';
-import { GetAvailableCarsActionGroup } from './car.actions';
+import { CarService } from '../../shared/cars/services/car.service';
+import { GetAvailableCarsActionGroup } from './available-car.actions';
 
 @Injectable()
-export class CarEffects {
+export class AvailableCarEffects {
 
   actions$ = inject(Actions);
   carService = inject(CarService)

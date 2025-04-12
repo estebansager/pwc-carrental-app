@@ -1,8 +1,8 @@
 import { createActionGroup, props } from '@ngrx/store';
-import { Car } from '../models/car.model';
+import { CarResults } from '../models/car-results.model';
 
 export const GetAvailableCarsActionGroup = createActionGroup({
-    source: 'Cars',
+    source: 'AvailableCars',
     events: {
       'Get Available Cars': props<{criteria: {
         startDate: string;
@@ -10,7 +10,7 @@ export const GetAvailableCarsActionGroup = createActionGroup({
         type?: string;
         model?: string;
       };}>(),
-      'Get Available Cars Success': props<{cars: Car[]}>(),
+      'Get Available Cars Success': props<{cars: CarResults[]}>(),
       'Get Available Cars Failure': props<{ error: unknown }>(),
     }
   });

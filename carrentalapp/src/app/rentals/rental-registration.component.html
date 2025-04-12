@@ -1,0 +1,71 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="row g-3 mt-3">
+    <div class="col-md-4">
+      <label for="dni" class="form-label">ID Number (DNI)</label>
+      <input type="text" id="dni" class="form-control" formControlName="personalIdNum">
+      <div *ngIf="personalIdNum?.touched && personalIdNum?.invalid" class="text-danger">
+        <div *ngIf="personalIdNum?.hasError('required')">DNI is required.</div>
+        <div *ngIf="personalIdNum?.hasError('pattern')">Invalid DNI format.</div>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <label for="fullName" class="form-label">Full Name</label>
+      <input type="text" id="fullName" class="form-control" formControlName="customerFullName">
+      <div *ngIf="customerFullName?.touched && customerFullName?.invalid" class="text-danger">
+        <div *ngIf="customerFullName?.hasError('required')">Full name is required.</div>
+        <div *ngIf="customerFullName?.hasError('minlength')">Full name should have at least 3 characters.</div>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <label for="address" class="form-label">Address</label>
+      <input type="text" id="address" class="form-control" formControlName="customerAddress">
+      <div *ngIf="customerAddress?.touched && customerAddress?.invalid" class="text-danger">
+        <div *ngIf="customerAddress?.hasError('required')">Address is required.</div>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <label for="carType" class="form-label">Car Type</label>
+      <select id="carType" class="form-select" formControlName="carType">
+        <option value="">Select car type</option>
+        <option *ngFor="let type of carTypes$ | async" [value]="type">{{ type }}</option>
+      </select>
+      <div *ngIf="carType?.touched && carType?.invalid" class="text-danger">
+        <div *ngIf="carType?.hasError('required')">Car type is required.</div>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <label for="carModel" class="form-label">Car Model</label>
+      <select id="carModel" class="form-select" formControlName="carModel">
+        <option value="">Select car model</option>
+        <option *ngFor="let model of carModels$ | async" [value]="model">{{ model }}</option>
+      </select>
+      <div *ngIf="carModel?.touched && carModel?.invalid" class="text-danger">
+        <div *ngIf="carModel?.hasError('required')">Car model is required.</div>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <label for="startDate" class="form-label">Start Date</label>
+      <input type="date" id="startDate" class="form-control" formControlName="startDate">
+      <div *ngIf="startDate?.touched && startDate?.invalid" class="text-danger">
+        <div *ngIf="startDate?.hasError('required')">Start date is required.</div>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <label for="endDate" class="form-label">End Date</label>
+      <input type="date" id="endDate" class="form-control" formControlName="endDate">
+      <div *ngIf="endDate?.touched && endDate?.invalid" class="text-danger">
+        <div *ngIf="endDate?.hasError('required')">End date is required.</div>
+      </div>
+    </div>
+  
+    <div class="col-12 text-end">
+      <button class="btn btn-primary mt-2" type="submit" [disabled]="form.invalid">
+        <i class="fas fa-save"></i> Register Rental
+      </button>
+    </div>
+  </form>

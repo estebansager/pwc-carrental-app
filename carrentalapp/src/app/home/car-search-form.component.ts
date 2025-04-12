@@ -1,5 +1,29 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+
+
+// Custom Validator for Start Date (should be present or future)
+export function startDateValidator(control: AbstractControl): ValidationErrors | null {
+  const startDate = new Date(control.value +  'T00:00:00');
+  const currentDate = new Date(new Date().toDateString());
+  if (startDate < currentDate) {
+    return { startDateInvalid: true };
+  }
+  return null;
+}
+
+// Custom Validator for End Date (should be after the start date)
+export function endDateValidator(control: AbstractControl): ValidationErrors | null {
+  const startDate = new Date(control.parent?.get('startDate')?.value  + 'T00:00:00');
+  const endDate = new Date(control.value +  'T00:00:00');
+  if (endDate < startDate) {
+    return { endDateInvalid: true };
+  }
+  return null;
+}
+
+
 
 @Component({
   selector: 'car-search-form',
@@ -15,13 +39,16 @@ export class CarSearchFormComponent {
     model?: string;
   }>();
 
+  @Input() carTypes$: Observable<string[]>;
+  @Input() carModels$: Observable<string[]>;
+  
+  
   form: FormGroup;
-  carTypes = ['Sedan', 'SUV', 'Hatchback', 'Pickup'];
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
+      startDate: ['', [Validators.required, startDateValidator]],
+      endDate: ['', [Validators.required, endDateValidator]],
       type: [''],
       model: ['']
     });
@@ -34,4 +61,15 @@ export class CarSearchFormComponent {
       this.form.markAllAsTouched();
     }
   }
+
+    // Getter for easy access to form controls
+    get startDate() {
+      return this.form.get('startDate');
+    }
+  
+    get endDate() {
+      return this.form.get('endDate');
+    }
+
+
 }

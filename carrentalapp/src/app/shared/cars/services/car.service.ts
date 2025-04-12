@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Car } from '../models/car.model';
 import { Observable } from 'rxjs';
-import { ConfigService } from '../../core/services/config.service';
+import { ConfigService } from '../../../core/services/config.service';
+import { CarResults } from '../../../home/models/car-results.model';
 
 @Injectable({ providedIn: 'root' })
 export class CarService {
@@ -14,7 +14,7 @@ export class CarService {
     endDate: string;
     type?: string;
     model?: string;
-  }): Observable<Car[]> {
+  }): Observable<CarResults[]> {
 
     let params = new HttpParams();
     params = params.set("startDate", criteria.startDate);
@@ -27,9 +27,18 @@ export class CarService {
         params = params.set("type", criteria.type)
 
     
-    return this.http.get<Car[]>(`${ this.configService.rentalsAvailability()}`, {
+    return this.http.get<CarResults[]>(`${ this.configService.rentalsAvailability()}`, {
         params: params
     });
 
+  }
+
+
+  getCarTypes() {
+    return this.http.get<string[]>(`${ this.configService.carTypes()}`);
+  }
+
+  getCarModels() {
+    return this.http.get<string[]>(`${ this.configService.carModels()}`);
   }
 }

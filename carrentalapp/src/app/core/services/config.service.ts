@@ -18,7 +18,13 @@ import { firstValueFrom } from "rxjs";
       return this.config?.api?.rentals?.availability || '';
     }
   
-    
+    carTypes(): string {
+      return this.config?.api?.cars?.types || '';
+    }
   
+  
+    carModels(): string {
+      return this.config?.api?.cars?.models || '';
+    }
   
   }
