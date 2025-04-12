@@ -1,10 +1,16 @@
+<!-- Error display -->
+<div *ngIf="apiError$ | async as apiError" class="alert alert-danger mt-3">
+  {{ apiError }}
+</div>
+
+<!--Rental form-->
 <form [formGroup]="form" (ngSubmit)="submit()" class="row g-3 mt-3">
     <div class="col-md-4">
       <label for="dni" class="form-label">ID Number (DNI)</label>
-      <input type="text" id="dni" class="form-control" formControlName="personalIdNum">
-      <div *ngIf="personalIdNum?.touched && personalIdNum?.invalid" class="text-danger">
-        <div *ngIf="personalIdNum?.hasError('required')">DNI is required.</div>
-        <div *ngIf="personalIdNum?.hasError('pattern')">Invalid DNI format.</div>
+      <input type="text" id="dni" class="form-control" formControlName="customerIdNumber">
+      <div *ngIf="customerIdNumber?.touched && customerIdNumber?.invalid" class="text-danger">
+        <div *ngIf="customerIdNumber?.hasError('required')">DNI is required.</div>
+        <div *ngIf="customerIdNumber?.hasError('pattern')">Invalid DNI format.</div>
       </div>
     </div>
   
@@ -69,3 +75,15 @@
       </button>
     </div>
   </form>
+
+<!--Confirmation details-->
+  <div *ngIf="rentalConfirmation$ | async as confirmation" class="alert alert-success mt-4">
+    <h5>Rental registered successfully. Below are the details.</h5>
+    <ul class="mb-0">
+      <li><strong>Rental Id:</strong> {{ confirmation.id }}</li>
+      <li><strong>Car Type:</strong> {{ confirmation.carType }}</li>
+      <li><strong>Car Model:</strong> {{ confirmation.carModel }}</li>
+      <li><strong>Start Date:</strong> {{ confirmation.startDate }}</li>
+      <li><strong>End Date:</strong> {{ confirmation.endDate }}</li>
+    </ul>
+  </div>

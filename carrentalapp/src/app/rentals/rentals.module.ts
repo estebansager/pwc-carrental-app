@@ -7,6 +7,8 @@ import { RentalRegistrationComponent } from './rental-registration.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CarModule } from '../shared/cars/car.module';
+import { rentalReducer, rentalReducerKey } from './state/rental.reducer';
+import { RentalEffects } from './state/rental.effects';
 
 const routes: Routes = [
   { path: '', component: RentalRegistrationComponent },
@@ -18,8 +20,8 @@ const routes: Routes = [
         CommonModule, 
         ReactiveFormsModule, 
         RouterModule.forChild(routes),
-        EffectsModule.forFeature([]),
-        //StoreModule.forFeature()
+        EffectsModule.forFeature([RentalEffects]),
+        StoreModule.forFeature(rentalReducerKey, rentalReducer),
         CarModule
     ],
 })

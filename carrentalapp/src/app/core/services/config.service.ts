@@ -26,5 +26,16 @@ import { firstValueFrom } from "rxjs";
     carModels(): string {
       return this.config?.api?.cars?.models || '';
     }
-  
+    
+    rentals(): string {
+      return this.config?.api?.rentals.rent || '';
+    }
+
+    scheduledServices(): string {
+      return this.config?.api?.services.scheduledservices || '';
+    }
+
+    mostUsedCar(): string {
+      return this.config?.api?.reporting.mostUsedCar || '';
+    }
   }
