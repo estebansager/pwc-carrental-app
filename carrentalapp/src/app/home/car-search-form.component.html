@@ -1,0 +1,27 @@
+<!-- car-search-form.component.html -->
+<form [formGroup]="form" (ngSubmit)="submit()" class="row g-3 mt-3">
+    <div class="col-md-4">
+      <label for="startDate" class="form-label">Start Date</label>
+      <input type="date" id="startDate" class="form-control" formControlName="startDate">
+    </div>
+    <div class="col-md-4">
+      <label for="endDate" class="form-label">End Date</label>
+      <input type="date" id="endDate" class="form-control" formControlName="endDate">
+    </div>
+    <div class="col-md-2">
+      <label for="type" class="form-label">Car Type</label>
+      <select id="type" class="form-select" formControlName="type">
+        <option value="">Any</option>
+        <option *ngFor="let type of carTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label for="model" class="form-label">Model</label>
+      <input type="text" id="model" class="form-control" formControlName="model">
+    </div>
+    <div class="col-12 text-end">
+      <button class="btn btn-primary mt-2" type="submit">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  </form>

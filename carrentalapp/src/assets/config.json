@@ -1,0 +1,10 @@
+{
+    "api": {
+        "rentals": {
+            "availability": "https://localhost:7137/rentals/availability"
+            
+        }
+    }
+
+    
+}
