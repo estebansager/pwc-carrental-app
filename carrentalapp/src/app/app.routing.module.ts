@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./car-services/services.module').then(m => m.ServicesModule)
   },
   {
+    path: 'statistics',
+    loadChildren: () => import('./reporting/reporting.module').then(m => m.ReportingModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }

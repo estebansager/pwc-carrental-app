@@ -1,0 +1,37 @@
+<!-- Error display -->
+<div *ngIf="error$ | async as apiError" class="alert alert-danger mt-3">
+  {{ apiError }}
+</div>
+
+<!--Reporting view-->
+<div class="container mt-4">
+  <h3>Rental Statistics</h3>
+
+  <!-- Date Range Form -->
+  <form class="row g-3 mt-2" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="col-md-4">
+      <label for="startDate" class="form-label">Start Date</label>
+      <input type="date" id="startDate" class="form-control" formControlName="startDate">
+    </div>
+    <div class="col-md-4">
+      <label for="endDate" class="form-label">End Date</label>
+      <input type="date" id="endDate" class="form-control" formControlName="endDate">
+    </div>
+    <div class="col-md-4 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">Get Stats</button>
+    </div>
+  </form>
+
+  <div *ngIf="loading$ | async" class="text-center mt-4">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+  <div *ngIf="(mostRentedCar$ | async) as car" class="mt-4">
+    <div class="alert alert-success">
+      <strong>Most Rented Car Type:</strong> {{ car.carType }}
+      <p></p>
+      <strong>Utilization:</strong>
+      {{ car.utilizationPercentage | number: '1.0-2' }}%
+    </div>
+  </div>
+  </div>
