@@ -13,13 +13,12 @@ import { CarResults } from './models/car-results.model';
 export class CarResultsListComponent implements OnInit {
 
   @Input()availableCars$: Observable<CarResults[]>; 
-
-
+  @Input() hasSearched: boolean;
+  
   constructor() {
     
   }
 
   ngOnInit(): void {
-
   }
 }

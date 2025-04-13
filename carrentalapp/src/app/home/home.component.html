@@ -1,5 +1,5 @@
 <div class="container mt-4">
     <h2><i class="fas fa-car"></i> Search Available Cars</h2>
     <car-search-form [carTypes$]="carTypes$" [carModels$]="carModels$" (search)="onSearch($event)"></car-search-form>
-    <car-search-results [availableCars$]="availableCars$"></car-search-results>
+    <car-search-results [hasSearched]="hasSearched" [availableCars$]="availableCars$"></car-search-results>
 </div>

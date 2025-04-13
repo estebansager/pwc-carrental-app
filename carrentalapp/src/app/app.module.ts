@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from './app.routing.module';
 import { provideHttpClient } from '@angular/common/http';
 import { ConfigService } from './core/services/config.service';
+import { ErrorModule } from './shared/errors/error.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ConfigService } from './core/services/config.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ErrorModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
   ],

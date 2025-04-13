@@ -1,0 +1,39 @@
+<h2 class="mb-4">Rentals</h2>
+
+<!-- Error display -->
+<error [message$]="apiError$"></error>
+
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>Rental Id</th>
+        <th>Customer</th>
+        <th>Car Type</th>
+        <th>Car Model</th>
+        <th>Rental Start Date</th>
+        <th>Rental End Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rental of rentals$ | async">
+        <td>{{ rental.id }}</td>
+        <td>{{ rental.customerFullName }}
+        <td>{{ rental.carType }}</td>
+        <td>{{ rental.carModel }}</td>
+        <td>{{ rental.startDate | date: 'yyyy-MM-dd'}}</td>
+        <td>{{ rental.endDate | date: 'yyyy-MM-dd'}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2" (click)="edit(rental.id)">
+            <i class="fas fa-edit"></i> Modify
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="cancel(rental.id)">
+            <i class="fas fa-trash"></i> Cancel
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

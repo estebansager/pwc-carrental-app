@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   availableCars$: Observable<CarResults[]>;
   carTypes$: Observable<string[]>;
   carModels$: Observable<string[]>;
-  
+  hasSearched: boolean;
 
   constructor(private store: Store) { 
     this.availableCars$ = this.store.select(availableCarsSelector)
@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(CarTypesActionGroup.getCarTypes());
     this.store.dispatch(CarModelsActionGroup.getCarModels());
+    this.hasSearched = false;
     
   }
 
@@ -41,5 +42,6 @@ export class HomeComponent implements OnInit {
     model?: string;
   }) {
     this.store.dispatch(GetAvailableCarsActionGroup.getAvailableCars({ criteria }));
+    this.hasSearched = true;
   }
 }
