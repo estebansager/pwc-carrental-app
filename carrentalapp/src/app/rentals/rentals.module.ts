@@ -25,7 +25,7 @@ const routes: Routes = [
     imports: [
       CommonModule,
       ReactiveFormsModule,
-      RouterModule.forChild(routes),
+      RouterModule.forChild(routes, ),
       EffectsModule.forFeature([RentalEffects]),
       StoreModule.forFeature(rentalReducerKey, rentalReducer),
       StoreModule.forFeature(rentalListReducerKey, rentalListReducer),
