@@ -59,7 +59,10 @@ export class RentalRegistrationComponent implements OnInit{
         const rentalId = params.get('rentalId');
         if (!!rentalId) {
           this.store.dispatch(GetRentalActionGroup.tryGetRental({rentalId}));
-        } 
+        } else {
+          this.editMode = false;
+          this.form.reset();
+        }
         
       });
 
@@ -69,9 +72,7 @@ export class RentalRegistrationComponent implements OnInit{
             this.updateForm(r);
             this.rentalIdToUpdate = r.id
         });
-          
-      this.editMode = false;
-      this.form.reset();
+
   }
 
   updateForm(rental: Rental) {
