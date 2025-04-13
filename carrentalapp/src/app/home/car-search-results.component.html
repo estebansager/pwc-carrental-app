@@ -6,15 +6,12 @@
           <strong>{{ car.model }}</strong> ({{ car.type }}) - (Quantity Available: {{car.count}})
           
         </div>
-        <button class="btn btn-outline-primary btn-sm">
-          <i class="fas fa-plus-circle"></i> Rent
-        </button>
       </div>
     </div>
   </div>
   
-  <ng-template #noResults>
-    <div class="alert alert-info mt-4">
+  <ng-template #noResults >
+    <div class="alert alert-info mt-4" *ngIf="hasSearched">
       <i class="fas fa-info-circle"></i> No cars available for the selected criteria.
     </div>
   </ng-template>

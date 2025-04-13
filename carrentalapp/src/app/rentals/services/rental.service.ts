@@ -13,4 +13,26 @@ export class RentalService {
         return this.http.post<Rental>(`${ this.configService.rentals()}`, rental);
     }
 
+    getRentals() {
+        return this.http.get<Rental[]>(`${ this.configService.rentals()}`);
+    }
+
+    getRental(id: string) {
+        return this.http.get<Rental>(`${ this.configService.rentals()}/${id}`);
+    }
+
+    cancelRental(rentalId: string) {
+        return this.http.delete(`${ this.configService.rentals()}/${rentalId}`);
+    }
+
+    modifyRental(rentalId: string, carType: string, carModel: string, startDate: string, endDate: string ) {
+        return this.http.put<Rental>(`${ this.configService.rentals()}/${rentalId}`, {
+            "carModel": carModel,
+            "carType": carType,
+            "startDate": startDate,
+            "endDate": endDate
+        });
+    }
+
+
 }
