@@ -29,10 +29,10 @@ The app is built with **Angular 19**, using **NgRx** for state management, and s
 ## Authentication
 
 
-    No authentication or authorization is implemented, as it was not required for this challenge.
+   No authentication or authorization is implemented, as it was not required for this challenge.
 
-    For a future iteration, the following features are recommended:
-    - User login with role-based access
-    - Auth guards to protect management and reporting routes
-    - OAuth2 integration with an Identity Provider
-    - Role-based UI rendering (e.g., management-only views for services and reporting)
+   For a future iteration, the following features are recommended:
+   - User login with role-based access
+   - Auth guards to protect management and reporting routes
+   - OAuth2 integration with an Identity Provider
+   - Role-based UI rendering (e.g., management-only views for services and reporting)
