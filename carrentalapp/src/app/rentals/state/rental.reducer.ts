@@ -22,6 +22,7 @@ export const rentalFeatureSelector = createFeatureSelector<RentalState>(rentalRe
 export const rentalApiErrorSelector = createSelector(rentalFeatureSelector, (state) => state.apiError);
 export const rentalConfirmationSelector = createSelector(rentalFeatureSelector, (state) => state.rentalConfirmation);
 export const selectedRentalSelector = createSelector(rentalFeatureSelector, (state) => state.selectedRental);
+export const rentalLoadingSelector = createSelector(rentalFeatureSelector, (state) => state.loading);
 
 
 export const rentalReducer = createReducer(

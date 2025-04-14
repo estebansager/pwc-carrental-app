@@ -7,7 +7,7 @@ import { CarModelsActionGroup, CarTypesActionGroup } from '../shared/cars/state/
 import { carModelsSelector, carTypesSelector } from '../shared/cars/state/cars.reducer';
 import { ClearErrorAndConfirmation, GetRentalActionGroup, ModifyRentalActionGroup, RentalActionGroup } from './state/rental.actions';
 import { RentalIn } from './models/rental-in.model';
-import { rentalApiErrorSelector, rentalConfirmationSelector, selectedRentalSelector } from './state/rental.reducer';
+import { rentalApiErrorSelector, rentalConfirmationSelector, rentalLoadingSelector, selectedRentalSelector } from './state/rental.reducer';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
@@ -26,6 +26,7 @@ export class RentalRegistrationComponent implements OnInit{
   carModels$: Observable<string[]>;
   rentalConfirmation$: Observable<Rental>;
   rentalToUpdate$: Observable<Rental>;
+  loading$: Observable<boolean>;
 
   rentalIdToUpdate: string;
   editMode: boolean;
@@ -37,6 +38,7 @@ export class RentalRegistrationComponent implements OnInit{
     this.apiError$ = this.store.select(rentalApiErrorSelector);
     this.rentalConfirmation$ = this.store.select(rentalConfirmationSelector);
     this.rentalToUpdate$ = this.store.select(selectedRentalSelector);
+    this.loading$ = this.store.select(rentalLoadingSelector);
 
     this.form = this.fb.group({
       customerIdNumber: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],

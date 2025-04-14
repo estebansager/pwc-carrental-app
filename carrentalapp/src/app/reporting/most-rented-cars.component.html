@@ -5,7 +5,7 @@
 
 <!--Reporting view-->
 <div class="container mt-4">
-  <h3>Rental Statistics</h3>
+  <h2><i class="fa-solid fa-chart-simple"></i>  Rental Statistics</h2>
 
   <!-- Date Range Form -->
   <form class="row g-3 mt-2" (ngSubmit)="onSubmit()" [formGroup]="form">
@@ -18,10 +18,10 @@
       <input type="date" id="endDate" class="form-control" formControlName="endDate">
     </div>
     <div class="col-md-4 d-flex align-items-end">
-      <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">Get Stats</button>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">Search</button>
     </div>
   </form>
-
+  <p></p>
   <div *ngIf="loading$ | async" class="text-center mt-4">
     <div class="spinner-border text-primary" role="status"></div>
   </div>

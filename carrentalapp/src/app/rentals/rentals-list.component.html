@@ -1,87 +1,89 @@
-<h2 class="mb-4">Rentals</h2>
 
 <!-- Error display -->
 <error [message$]="apiError$"></error>
 
+<div class="container">
+  <h2 class="mb-4"><i class="fas fa-car"></i> Rentals</h2>
 
-<div class="table-responsive">
-  <table class="table table-bordered table-hover">
-    <thead class="table-light">
-      <tr>
-        <th>
-          <button class="btn btn-link p-0" (click)="sort('id', true)">
-            <i class="bi bi-caret-up-fill"></i>
-          </button>
-          <button class="btn btn-link p-0" (click)="sort('id', false)">
-            <i class="bi bi-caret-down-fill"></i>
-          </button>
-          Rental Id
-        </th>
-        <th>
-          <button class="btn btn-link p-0" (click)="sort('customerFullName', true)">
-            <i class="bi bi-caret-up-fill"></i>
-          </button>
-          <button class="btn btn-link p-0" (click)="sort('customerFullName', false)">
-            <i class="bi bi-caret-down-fill"></i>
-          </button>
-          Customer
-        </th>
-        <th>
-          <button class="btn btn-link p-0" (click)="sort('carType', true)">
-            <i class="bi bi-caret-up-fill"></i>
-          </button>
-          <button class="btn btn-link p-0" (click)="sort('carType', false)">
-            <i class="bi bi-caret-down-fill"></i>
-          </button>
-          Car Type
-        </th>
-        <th>
-          <button class="btn btn-link p-0" (click)="sort('carModel', true)">
-            <i class="bi bi-caret-up-fill"></i>
-          </button>
-          <button class="btn btn-link p-0" (click)="sort('carModel', false)">
-            <i class="bi bi-caret-down-fill"></i>
-          </button>
-          Car Model
-        </th>
-        <th>
-          <button class="btn btn-link p-0" (click)="sort('startDate', true)">
-            <i class="bi bi-caret-up-fill"></i>
-          </button>
-          <button class="btn btn-link p-0" (click)="sort('startDate', false)">
-            <i class="bi bi-caret-down-fill"></i>
-          </button>
-          Rental Start Date
-        </th>
-        <th>
-          <button class="btn btn-link p-0" (click)="sort('endDate', true)">
-            <i class="bi bi-caret-up-fill"></i>
-          </button>
-          <button class="btn btn-link p-0" (click)="sort('endDate', false)">
-            <i class="bi bi-caret-down-fill"></i>
-          </button>
-          Rental End Date
-        </th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let rental of rentals">
-        <td>{{ rental.id }}</td>
-        <td>{{ rental.customerFullName }}
-        <td>{{ rental.carType }}</td>
-        <td>{{ rental.carModel }}</td>
-        <td>{{ rental.startDate | date: 'yyyy-MM-dd'}}</td>
-        <td>{{ rental.endDate | date: 'yyyy-MM-dd'}}</td>
-        <td>
-          <button class="btn btn-sm btn-primary me-2" (click)="edit(rental.id)">
-            <i class="fas fa-edit"></i> Modify
-          </button>
-          <button class="btn btn-sm btn-danger" (click)="cancel(rental.id)">
-            <i class="fas fa-trash"></i> Cancel
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="table-responsive scroll">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>
+              <button class="btn btn-link p-0" (click)="sort('id', true)">
+                <i class="bi bi-caret-up-fill"></i>
+              </button>
+              <button class="btn btn-link p-0" (click)="sort('id', false)">
+                <i class="bi bi-caret-down-fill"></i>
+              </button>
+              Rental Id
+            </th>
+            <th>
+              <button class="btn btn-link p-0" (click)="sort('customerFullName', true)">
+                <i class="bi bi-caret-up-fill"></i>
+              </button>
+              <button class="btn btn-link p-0" (click)="sort('customerFullName', false)">
+                <i class="bi bi-caret-down-fill"></i>
+              </button>
+              Customer
+            </th>
+            <th>
+              <button class="btn btn-link p-0" (click)="sort('carType', true)">
+                <i class="bi bi-caret-up-fill"></i>
+              </button>
+              <button class="btn btn-link p-0" (click)="sort('carType', false)">
+                <i class="bi bi-caret-down-fill"></i>
+              </button>
+              Car Type
+            </th>
+            <th>
+              <button class="btn btn-link p-0" (click)="sort('carModel', true)">
+                <i class="bi bi-caret-up-fill"></i>
+              </button>
+              <button class="btn btn-link p-0" (click)="sort('carModel', false)">
+                <i class="bi bi-caret-down-fill"></i>
+              </button>
+              Car Model
+            </th>
+            <th>
+              <button class="btn btn-link p-0" (click)="sort('startDate', true)">
+                <i class="bi bi-caret-up-fill"></i>
+              </button>
+              <button class="btn btn-link p-0" (click)="sort('startDate', false)">
+                <i class="bi bi-caret-down-fill"></i>
+              </button>
+              Rental Start Date
+            </th>
+            <th>
+              <button class="btn btn-link p-0" (click)="sort('endDate', true)">
+                <i class="bi bi-caret-up-fill"></i>
+              </button>
+              <button class="btn btn-link p-0" (click)="sort('endDate', false)">
+                <i class="bi bi-caret-down-fill"></i>
+              </button>
+              Rental End Date
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rental of rentals">
+            <td>{{ rental.id }}</td>
+            <td>{{ rental.customerFullName }}
+            <td>{{ rental.carType }}</td>
+            <td>{{ rental.carModel }}</td>
+            <td>{{ rental.startDate | date: 'yyyy-MM-dd'}}</td>
+            <td>{{ rental.endDate | date: 'yyyy-MM-dd'}}</td>
+            <td>
+              <button class="btn btn-sm btn-primary me-2" (click)="edit(rental.id)">
+                <i class="fas fa-edit"></i> Modify
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="cancel(rental.id)">
+                <i class="fas fa-trash"></i> Cancel
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>
