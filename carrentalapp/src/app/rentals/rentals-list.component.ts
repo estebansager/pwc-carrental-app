@@ -11,6 +11,7 @@ import { SortService } from "./services/sort.service";
 @Component({
     selector: 'rentals-list',
     templateUrl: './rentals-list.component.html',
+    styleUrl: './rentals-list.component.css',
     standalone: false
   })
   export class RentalListComponent implements OnInit {
